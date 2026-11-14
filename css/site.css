@@ -429,3 +429,13 @@ html[data-hide="1"]:not(.menu-open) .site-header{transform:translateY(-101%)}
   .site-footer__co{grid-template-columns:auto auto auto auto}
 }
 @media (min-width:62rem){.site-footer__tag{white-space:nowrap}.site-footer__grid{gap:3rem}}
+
+/* No gap between the last section and the closing scene */
+.sec:has(+ .close){padding-bottom:1.75rem}
+@media (min-width:62rem){
+  .sec:has(+ .close){padding-bottom:1.25rem}
+  .close{margin-top:0;background:linear-gradient(to bottom,var(--prev,var(--sand)) 0,var(--earth) 58%)}
+  .close__top picture{-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 13%);mask-image:linear-gradient(to bottom,transparent 0,#000 13%)}
+  .site-footer__co{grid-template-columns:auto auto auto}
+}
+@media (min-width:62rem){.site-footer__co{grid-template-columns:auto auto auto auto;gap:2.5rem}}
