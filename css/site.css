@@ -295,3 +295,7 @@ html[data-hide="1"]:not(.menu-open) .site-header{transform:translateY(-101%)}
 .site-footer{background:var(--linen);color:var(--ink-soft);padding-block:2.75rem 1.75rem}
 .site-footer a{color:var(--forest);font-weight:500}
 .site-footer__legal{border-top-color:rgba(30,59,44,.18)}
+/* Gradual transition from field to soil */
+.close{background:linear-gradient(to bottom,var(--earth) 68%,var(--earth-deep))}
+.close__top::after{content:"";position:absolute;inset:38% 0 0 0;background:linear-gradient(to bottom,rgba(59,42,30,0),rgba(59,42,30,.38) 45%,rgba(59,42,30,.92))}
+.close__line{z-index:1}
