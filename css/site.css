@@ -439,3 +439,9 @@ html[data-hide="1"]:not(.menu-open) .site-header{transform:translateY(-101%)}
   .site-footer__co{grid-template-columns:auto auto auto}
 }
 @media (min-width:62rem){.site-footer__co{grid-template-columns:auto auto auto auto;gap:2.5rem}}
+/* Applications (desktop): shorter frame cropped to the sharp foreground, no upscaling */
+@media (min-width:62rem){
+  .apps__img{top:1.6rem;height:auto !important;aspect-ratio:4/5;width:38%}
+  .apps__img img{object-position:50% 88%;transform:none;transition:none}
+  .apps li.is-active .apps__img img{transform:none}
+}
