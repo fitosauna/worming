@@ -500,3 +500,28 @@ html[data-hide="1"]:not(.menu-open) .site-header{transform:translateY(-101%)}
   .facts div{grid-template-columns:10rem 1fr;gap:1.5rem;align-items:baseline;padding:1rem 0}
   .beneath__side{gap:2.25rem}
 }
+/* Compare: with / without */
+.cmp{padding-top:0}
+.cmp__grid{display:grid;gap:1.75rem}
+.cmp__copy .h2{font-size:clamp(2.2rem,1.6rem + 2.6vw,3.6rem)}
+.cmp__copy p{margin-top:1rem;max-width:26rem}
+.cmp__stage{position:relative;margin:0 calc(var(--gut) * -1);aspect-ratio:4/5;overflow:hidden;background:var(--earth);touch-action:pan-y;cursor:ew-resize;user-select:none;-webkit-user-select:none}
+.cmp__img{position:absolute;inset:0;width:100%;height:100% !important;object-fit:cover;object-position:50% 60%;pointer-events:none;-webkit-user-drag:none}
+.cmp__top{clip-path:polygon(0 0,50% 0,50% 100%,0 100%)}
+.cmp__line{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+.cmp__line path{fill:none;stroke:var(--linen);stroke-width:2;vector-effect:non-scaling-stroke;filter:drop-shadow(0 0 6px rgba(42,29,20,.45))}
+.cmp__knob{position:absolute;top:50%;left:50%;width:3.25rem;height:3.25rem;margin:-1.625rem 0 0 -1.625rem;border-radius:50%;background:var(--linen);color:var(--forest);display:grid;place-items:center;box-shadow:0 6px 22px rgba(42,29,20,.35);pointer-events:none;transition:transform .2s}
+.is-drag .cmp__knob{transform:scale(.9)}
+.cmp__tag{position:absolute;bottom:1rem;padding:.45rem .8rem;font-size:.82rem;font-weight:500;line-height:1;pointer-events:none;white-space:nowrap}
+.cmp__tag--a{left:1rem;background:var(--linen);color:var(--earth);opacity:var(--a,1)}
+.cmp__tag--b{right:1rem;background:var(--forest);color:var(--linen);opacity:var(--b,1)}
+.cmp__range{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;pointer-events:none}
+.cmp__stage:has(.cmp__range:focus-visible) .cmp__knob{outline:3px solid var(--forest);outline-offset:3px}
+@media (min-width:62rem){
+  .cmp__grid{grid-template-columns:4fr 8fr;gap:4rem;align-items:end}
+  .cmp__stage{margin:0;aspect-ratio:16/9}
+  .cmp__tag{bottom:1.25rem;font-size:.9rem}.cmp__tag--a{left:1.25rem}.cmp__tag--b{right:1.25rem}
+}
+.cmp__stage{aspect-ratio:1/1}
+.cmp{padding-bottom:clamp(3rem,6vw,5rem)}
+@media (min-width:62rem){.cmp__stage{aspect-ratio:16/9}}

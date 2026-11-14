@@ -155,3 +155,47 @@
     rv.forEach(function (el) { ro.observe(el); });
   } else { rv.forEach(function (el) { el.classList.add('in'); }); }
 })();
+
+/* Compare: with / without, split by a living surface line */
+(function () {
+  var st = document.getElementById('compare'); if (!st) return;
+  var top = st.querySelector('.cmp__top'), path = st.querySelector('.cmp__line path'), knob = st.querySelector('.cmp__knob'), range = st.querySelector('.cmp__range');
+  var calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var pos = 50, touched = false, N = 28;
+  function draw() {
+    var pts = [], d = '', mid = pos, r = st.getBoundingClientRect(), amp = calm ? 0 : Math.min(1.5, 900 / Math.max(r.width, 1) * 1.1);
+    for (var i = 0; i <= N; i++) {
+      var y = i / N * 100, x = pos + amp * Math.sin(y / 100 * Math.PI * 2.6 + pos * 0.16) + amp * 0.4 * Math.sin(y / 100 * Math.PI * 6 - pos * 0.1);
+      if (i === N / 2) mid = x;
+      pts.push(x.toFixed(2) + '% ' + y.toFixed(2) + '%'); d += (i ? 'L' : 'M') + x.toFixed(2) + ' ' + y.toFixed(2);
+    }
+    top.style.clipPath = 'polygon(0 0,' + pts.join(',') + ',0 100%)';
+    path.setAttribute('d', d); knob.style.left = mid + '%';
+    st.style.setProperty('--a', Math.max(0, Math.min(1, (pos - 12) / 14)));
+    st.style.setProperty('--b', Math.max(0, Math.min(1, (88 - pos) / 14)));
+  }
+  function set(v) { pos = Math.max(4, Math.min(96, v)); range.value = Math.round(pos); draw(); }
+  function fromEvent(e) { var r = st.getBoundingClientRect(); set((e.clientX - r.left) / r.width * 100); }
+  var drag = false;
+  st.addEventListener('pointerdown', function (e) { if (e.button) return; drag = true; touched = true; st.classList.add('is-drag'); try { st.setPointerCapture(e.pointerId); } catch (x) {} fromEvent(e); });
+  st.addEventListener('pointermove', function (e) { if (drag) fromEvent(e); });
+  ['pointerup', 'pointercancel'].forEach(function (n) { st.addEventListener(n, function () { drag = false; st.classList.remove('is-drag'); }); });
+  range.addEventListener('input', function () { touched = true; pos = +range.value; draw(); });
+  window.addEventListener('resize', draw);
+  draw();
+  if (!calm && 'IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) {
+      if (!es[0].isIntersecting) return; io.disconnect();
+      var t0 = null, keys = [50, 70, 34, 50];
+      function ease(t) { return t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2; }
+      function step(ts) {
+        if (touched) return; if (!t0) t0 = ts;
+        var t = Math.min((ts - t0) / 2100, 1) * 3, i = Math.min(Math.floor(t), 2);
+        set(keys[i] + (keys[i + 1] - keys[i]) * ease(t - i));
+        if (t < 3) requestAnimationFrame(step);
+      }
+      setTimeout(function () { requestAnimationFrame(step); }, 350);
+    }, { threshold: .55 });
+    io.observe(st);
+  }
+})();
