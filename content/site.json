@@ -1,0 +1,31 @@
+{
+  "_note": "Single source for company and product facts. Values marked 'To be confirmed' have not been supplied yet. Never fill gaps with invented numbers.",
+  "company": {
+    "legalName": "SIA \"Worming\"",
+    "regNo": "48503018418",
+    "address": "\"Līči\", Vītiņu pagasts, Auces novads, LV-3721, Latvia",
+    "addressStatus": "TO CONFIRM: since the 2021 reform Vītiņu pagasts is in Dobeles novads; a business directory lists LV-3708.",
+    "phone": "+371 28643755",
+    "phoneHref": "+37128643755",
+    "email": "info@wormingbiohumuss.lv"
+  },
+  "product": {
+    "name": "Biohumus (vermicompost)",
+    "type": "Processed organic soil improver",
+    "ph": "7.3",
+    "organicMatter": "min. 20.1%",
+    "n": "0.9%",
+    "p2o5": "0.9%",
+    "k2o": "0.7%",
+    "moisture": "To be confirmed",
+    "screen": "To be confirmed",
+    "storage": "−30 °C to +40 °C",
+    "storageNote": "Protect from rain and direct sun."
+  },
+  "toConfirm": [
+    "Screen size and moisture",
+    "Formats (sack and big bag sizes), capacity, lead times",
+    "Production steps: maturation, screening, testing and how often batches are analysed",
+    "Whether batch-specific analysis is available with each quote"
+  ]
+}
