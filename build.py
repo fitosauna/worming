@@ -12,22 +12,10 @@ def pic(name, alt='', mq='(min-aspect-ratio:1/1)', small='tall', big='wide', laz
     return (f'<picture><source media="{mq}" srcset="{P}{name}-{big}.jpg">'
             f'<img src="{P}{name}-{small}.jpg" alt="{alt}"{" loading=\"lazy\"" if lazy else " fetchpriority=\"high\""}></picture>')
 
-def close(title, btn='Request a quote'):
-    return f'''
-<section class="sec sec--earth close" data-theme="dark">
-  <div class="close__top">{pic('landscape-latvia', 'Farmland in morning mist')}
-  <svg class="close__line" viewBox="0 0 1 1" preserveAspectRatio="none" aria-hidden="true"><path class="fill" d="M0,0.6 C0.3,0.1 0.62,0.95 1,0.35 L1,1.1 L0,1.1 Z"/><path d="M0,0.6 C0.3,0.1 0.62,0.95 1,0.35"/></svg></div>
-  <div class="wrap">
-    <h2 class="h2">{title}</h2>
-    <div class="close__grid">
-      <div class="contact">
-        <a href="tel:+37128643755" data-k="company.phone">+371 28643755</a>
-        <a href="mailto:info@wormingbiohumuss.lv" data-k="company.email">info@wormingbiohumuss.lv</a>
-      </div>
-      <a class="btn btn--solid-light" href="quote.html"><span>{btn}</span></a>
-    </div>
-  </div>
-</section>'''
+CLOSE_TPL = '\n<section class="sec sec--earth close" data-theme="dark" style="--prev:var(--__PREV__)">\n  <div class="close__top">__PIC__\n  <svg class="close__line" viewBox="0 0 1 1" preserveAspectRatio="none" aria-hidden="true"><path class="fill" d="M0,0.6 C0.3,0.1 0.62,0.95 1,0.35 L1,1.1 L0,1.1 Z"/><path d="M0,0.6 C0.3,0.1 0.62,0.95 1,0.35"/></svg></div>\n  <svg class="close__waves" viewBox="0 0 1440 320" preserveAspectRatio="none" aria-hidden="true"><path class="w1" d="M0,140 C300,60 600,220 900,150 C1150,95 1300,120 1440,90 L1440,320 L0,320 Z"/><path class="w2" d="M0,200 C260,260 520,120 820,190 C1100,255 1280,170 1440,210 L1440,320 L0,320 Z"/><path class="w3" d="M0,262 C240,300 520,318 760,300 C1040,280 1250,235 1440,250 L1440,320 L0,320 Z"/></svg>\n  <div class="wrap">\n    <div class="close__head">\n      <h2 class="h2">__TITLE__</h2>\n      <svg class="close__orn" viewBox="0 0 300 24" aria-hidden="true"><path d="M4,18 C6,8 14,5 22,7 C20,15 13,19 4,18 Z M26,18 C24,10 30,4 40,3 C41,12 35,18 26,18 Z"/><line x1="56" y1="14" x2="296" y2="14"/></svg>\n    </div>\n    <div class="close__grid">\n      <div class="contact">\n        <a href="tel:+37128643755"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><span data-k="company.phone">+371 28643755</span></a>\n        <a href="mailto:info@wormingbiohumuss.lv"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3 7l9 6 9-6"/></svg><span data-k="company.email">info@wormingbiohumuss.lv</span></a>\n      </div>\n      <a class="btn btn--solid-light" href="quote.html"><span>__BTN__<svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6"/></svg></span></a>\n    </div>\n  </div>\n</section>'
+
+def close(title, btn='Request a quote', prev='sand'):
+    return CLOSE_TPL.replace('__PREV__', prev).replace('__PIC__', pic('landscape-latvia', 'Farmland in morning mist')).replace('__TITLE__', title).replace('__BTN__', btn)
 
 PASSPORT = idx[idx.index('<div class="passport"'):idx.index('</section>', idx.index('<div class="passport"'))].rsplit('</div>', 1)[0]
 
@@ -276,7 +264,7 @@ quality = f'''
     </div>
   </div>
 </section>
-{close('Request a quote.')}
+{close('Request a quote.', prev='linen')}
 '''
 page('quality.html', 'Quality and supply', 'How Worming produces, checks, packs and delivers worm humus across the EU.', quality)
 
