@@ -12,7 +12,7 @@ def pic(name, alt='', mq='(min-aspect-ratio:1/1)', small='tall', big='wide', laz
     return (f'<picture><source media="{mq}" srcset="{P}{name}-{big}.jpg">'
             f'<img src="{P}{name}-{small}.jpg" alt="{alt}"{" loading=\"lazy\"" if lazy else " fetchpriority=\"high\""}></picture>')
 
-CLOSE_TPL = '\n<section class="sec sec--earth close" data-theme="dark" style="--prev:var(--__PREV__)">\n  <div class="close__top">__PIC__\n  <svg class="close__line" viewBox="0 0 1 1" preserveAspectRatio="none" aria-hidden="true"><path class="fill" d="M0,0.6 C0.3,0.1 0.62,0.95 1,0.35 L1,1.1 L0,1.1 Z"/><path d="M0,0.6 C0.3,0.1 0.62,0.95 1,0.35"/></svg></div>\n  <svg class="close__waves" viewBox="0 0 1440 320" preserveAspectRatio="none" aria-hidden="true"><path class="w1" d="M0,140 C300,60 600,220 900,150 C1150,95 1300,120 1440,90 L1440,320 L0,320 Z"/><path class="w2" d="M0,200 C260,260 520,120 820,190 C1100,255 1280,170 1440,210 L1440,320 L0,320 Z"/><path class="w3" d="M0,262 C240,300 520,318 760,300 C1040,280 1250,235 1440,250 L1440,320 L0,320 Z"/></svg>\n  <div class="wrap">\n    <div class="close__head">\n      <h2 class="h2">__TITLE__</h2>\n      <svg class="close__orn" viewBox="0 0 300 24" aria-hidden="true"><path d="M4,18 C6,8 14,5 22,7 C20,15 13,19 4,18 Z M26,18 C24,10 30,4 40,3 C41,12 35,18 26,18 Z"/><line x1="56" y1="14" x2="296" y2="14"/></svg>\n    </div>\n    <div class="close__grid">\n      <div class="contact">\n        <a href="tel:+37120252517"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><span data-k="company.phone">+371 20252517</span></a>\n        <a href="mailto:toms.lemsevskis@gmail.com"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3 7l9 6 9-6"/></svg><span data-k="company.email">toms.lemsevskis@gmail.com</span></a>\n      </div>\n      <a class="btn btn--solid-light" href="quote.html"><span>__BTN__<svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6"/></svg></span></a>\n    </div>\n  </div>\n</section>'
+CLOSE_TPL = '\n<section class="sec sec--earth close" data-theme="dark" style="--prev:var(--__PREV__)">\n  <div class="close__top">__PIC__\n  <svg class="close__line" viewBox="0 0 1 1" preserveAspectRatio="none" aria-hidden="true"><path class="fill" d="M0,0.6 C0.3,0.1 0.62,0.95 1,0.35 L1,1.1 L0,1.1 Z"/><path d="M0,0.6 C0.3,0.1 0.62,0.95 1,0.35"/></svg></div>\n  <svg class="close__waves" viewBox="0 0 1440 320" preserveAspectRatio="none" aria-hidden="true"><path class="w1" d="M0,140 C300,60 600,220 900,150 C1150,95 1300,120 1440,90 L1440,320 L0,320 Z"/><path class="w2" d="M0,200 C260,260 520,120 820,190 C1100,255 1280,170 1440,210 L1440,320 L0,320 Z"/><path class="w3" d="M0,262 C240,300 520,318 760,300 C1040,280 1250,235 1440,250 L1440,320 L0,320 Z"/></svg>\n  <div class="wrap">\n    <div class="close__head">\n      <h2 class="h2">__TITLE__</h2>\n      <svg class="close__orn" viewBox="0 0 300 24" aria-hidden="true"><path d="M4,18 C6,8 14,5 22,7 C20,15 13,19 4,18 Z M26,18 C24,10 30,4 40,3 C41,12 35,18 26,18 Z"/><line x1="56" y1="14" x2="296" y2="14"/></svg>\n    </div>\n    <div class="close__grid">\n      <div class="contact">\n        <a href="tel:+37120252517"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><span data-k="company.phone">+371 20252517</span></a>\n        <a href="mailto:tomsupenieks@gmail.com"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3 7l9 6 9-6"/></svg><span data-k="company.email">tomsupenieks@gmail.com</span></a>\n      </div>\n      <a class="btn btn--solid-light" href="quote.html"><span>__BTN__<svg class="arr" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6"/></svg></span></a>\n    </div>\n  </div>\n</section>'
 
 def close(title, btn='Request a quote', prev='sand'):
     return CLOSE_TPL.replace('__PREV__', prev).replace('__PIC__', pic('landscape-latvia', 'Farmland in morning mist')).replace('__TITLE__', title).replace('__BTN__', btn)
@@ -285,7 +285,7 @@ quote = f'''
         <li>If you asked for one, we send a sample.</li>
       </ol>
       <h2 class="q-sub">Prefer to talk?</h2>
-      <p class="contact"><a href="tel:+37120252517" data-k="company.phone">+371 20252517</a><a href="mailto:toms.lemsevskis@gmail.com" data-k="company.email">toms.lemsevskis@gmail.com</a></p>
+      <p class="contact"><a href="tel:+37120252517" data-k="company.phone">+371 20252517</a><a href="mailto:tomsupenieks@gmail.com" data-k="company.email">tomsupenieks@gmail.com</a></p>
     </div>
   </div>
 
@@ -355,7 +355,7 @@ privacy = '''
     <p class="small muted">Draft for legal review. Last updated 14 November 2026.</p>
 
     <h2>Who we are</h2>
-    <p><span data-k="company.legalName">SIA "Worming"</span>, registration number <span data-k="company.regNo">48503018418</span>, <span data-k="company.address">"Līči", Vītiņu pagasts, Auces novads, LV-3721, Latvia</span>, is the controller of personal data collected through this website. Contact: <a href="mailto:toms.lemsevskis@gmail.com">toms.lemsevskis@gmail.com</a>, <span data-k="company.phone">+371 20252517</span>.</p>
+    <p><span data-k="company.legalName">SIA "Worming"</span>, registration number <span data-k="company.regNo">48503018418</span>, <span data-k="company.address">"Līči", Vītiņu pagasts, Auces novads, LV-3721, Latvia</span>, is the controller of personal data collected through this website. Contact: <a href="mailto:tomsupenieks@gmail.com">tomsupenieks@gmail.com</a>, <span data-k="company.phone">+371 20252517</span>.</p>
 
     <h2>What we collect</h2>
     <p>When you send a quote request we receive what you enter in the form: company, type of operation, country, delivery postcode or region, the product details you ask about, your name, work email, phone number if you give one, and your notes. If you email or call us, we keep that correspondence.</p>
@@ -378,7 +378,7 @@ privacy = '''
     <p>This website sets no advertising or tracking cookies and loads no third-party analytics. Fonts are served from our own site.</p>
 
     <h2>Your rights</h2>
-    <p>You can ask us for access to your data, to correct or delete it, to restrict or object to its use, and to receive it in a portable format. Write to <a href="mailto:toms.lemsevskis@gmail.com">toms.lemsevskis@gmail.com</a>. You can also complain to the Latvian Data State Inspectorate (Datu valsts inspekcija, dvi.gov.lv).</p>
+    <p>You can ask us for access to your data, to correct or delete it, to restrict or object to its use, and to receive it in a portable format. Write to <a href="mailto:tomsupenieks@gmail.com">tomsupenieks@gmail.com</a>. You can also complain to the Latvian Data State Inspectorate (Datu valsts inspekcija, dvi.gov.lv).</p>
 
     <h2>Changes</h2>
     <p>We'll publish any changes on this page with a new date.</p>
@@ -396,7 +396,7 @@ company = '''
       <div><dt>Registration number</dt><dd class="num" data-k="company.regNo">48503018418</dd></div>
       <div><dt>Registered address</dt><dd data-k="company.address">"Līči", Vītiņu pagasts, Auces novads, LV-3721, Latvia</dd></div>
       <div><dt>Phone</dt><dd><a href="tel:+37120252517" data-k="company.phone">+371 20252517</a></dd></div>
-      <div><dt>Email</dt><dd><a href="mailto:toms.lemsevskis@gmail.com" data-k="company.email">toms.lemsevskis@gmail.com</a></dd></div>
+      <div><dt>Email</dt><dd><a href="mailto:tomsupenieks@gmail.com" data-k="company.email">tomsupenieks@gmail.com</a></dd></div>
     </dl>
     <p style="margin-top:2.5rem"><a class="btn btn--solid-dark" href="quote.html"><span>Request a quote</span></a></p>
   </div>
@@ -438,7 +438,7 @@ about = f"""
       <p class="why__lede">Worming was founded in 2023 on a simple belief: good health starts with good food, and good food starts with healthy soil.</p>
       <p>We care about nutrition, wellbeing and sustainable agriculture. Making worm humus is how we support the growers who produce high-quality organic food.</p>
     </div>
-    <figure class="why__img">{img1('about-founder-tall', 'Portrait at the farm near Auce')}</figure>
+    <figure class="why__fig"><div class="why__img">{img1('about-founder-tall', 'Toms Upenieks at the farm near Auce')}</div><figcaption><strong>Toms Upenieks</strong><span>Founder</span></figcaption></figure>
   </div>
 </section>
 

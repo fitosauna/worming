@@ -237,3 +237,8 @@
 .roots__layer--2{z-index:1}.roots__layer--3{z-index:2}
 .gen__img img{object-position:50% 0}
 @media (min-width:62rem){.gen__img{height:min(92svh,54rem)}}
+
+.why__fig{margin:0}
+.why__fig figcaption{display:flex;flex-direction:column;margin-top:.9rem;padding-top:.7rem;border-top:1.5px solid var(--forest);color:var(--forest)}
+.why__fig figcaption strong{font-family:var(--serif);font-variation-settings:"opsz" 36;font-weight:600;font-size:1.4rem;line-height:1.2}
+.why__fig figcaption span{font-size:var(--step-1);color:var(--ink-soft)}
