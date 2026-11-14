@@ -395,8 +395,8 @@ company = '''
       <div><dt>Legal name</dt><dd data-k="company.legalName">SIA "Worming"</dd></div>
       <div><dt>Registration number</dt><dd class="num" data-k="company.regNo">48503018418</dd></div>
       <div><dt>Registered address</dt><dd data-k="company.address">"Līči", Vītiņu pagasts, Auces novads, LV-3721, Latvia</dd></div>
-      <div><dt>Phone</dt><dd><a href="tel:+37128643755" data-k="company.phone">+371 28643755</a></dd></div>
-      <div><dt>Email</dt><dd><a href="mailto:info@wormingbiohumuss.lv" data-k="company.email">info@wormingbiohumuss.lv</a></dd></div>
+      <div><dt>Phone</dt><dd><a href="tel:+37128643755" data-k="company.phone">+371 28643755</a><br><a href="tel:+37120252517" data-k="company.phone2">+371 20252517</a></dd></div>
+      <div><dt>Email</dt><dd><a href="mailto:info@wormingbiohumuss.lv" data-k="company.email">info@wormingbiohumuss.lv</a><br><a href="mailto:toms.lemsevskis@gmail.com" data-k="company.email2">toms.lemsevskis@gmail.com</a></dd></div>
     </dl>
     <p style="margin-top:2.5rem"><a class="btn btn--solid-dark" href="quote.html"><span>Request a quote</span></a></p>
   </div>

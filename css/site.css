@@ -421,3 +421,11 @@ html[data-hide="1"]:not(.menu-open) .site-header{transform:translateY(-101%)}
   .site-footer__grid{grid-template-columns:1fr auto}
   .site-footer__co{grid-template-columns:auto auto auto;gap:3rem}
 }
+
+/* Desktop: close the gap above the closing scene */
+@media (min-width:62rem){
+  .close{margin-top:-7rem;background:linear-gradient(to bottom,var(--prev,var(--sand)) 0,var(--prev,var(--sand)) 3%,var(--earth) 58%)}
+  .close__top picture{-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 20%);mask-image:linear-gradient(to bottom,transparent 0,#000 20%)}
+  .site-footer__co{grid-template-columns:auto auto auto auto}
+}
+@media (min-width:62rem){.site-footer__tag{white-space:nowrap}.site-footer__grid{gap:3rem}}
