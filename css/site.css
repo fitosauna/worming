@@ -281,3 +281,17 @@ html[data-hide="1"]:not(.menu-open) .site-header{transform:translateY(-101%)}
 .made__img{position:relative}
 .made__img::after{content:"";position:absolute;inset:55% 0 0 0;background:linear-gradient(to bottom,rgba(30,59,44,0),var(--forest))}
 .layer--above picture::after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(244,245,241,.78) 35%,rgba(244,245,241,.5))}
+
+/* Lighter page ending: compact quote call, light footer */
+.close{padding-bottom:clamp(2.75rem,6vw,4.5rem)}
+.close__top{height:min(46svh,26rem);margin-bottom:clamp(1.75rem,4vw,3rem)}
+.close .h2{font-size:clamp(2.4rem,1.6rem + 3.6vw,4.6rem);max-width:13ch}
+.close__grid{margin-top:1.75rem;gap:1.5rem}
+.close .btn{min-height:3.75rem;padding-inline:2.25rem;font-size:1.08rem}
+@media (min-width:62rem){
+  .close .wrap{display:grid;grid-template-columns:1fr auto;align-items:end;gap:4rem}
+  .close__grid{margin:0;grid-template-columns:1fr;justify-items:start}
+}
+.site-footer{background:var(--linen);color:var(--ink-soft);padding-block:2.75rem 1.75rem}
+.site-footer a{color:var(--forest);font-weight:500}
+.site-footer__legal{border-top-color:rgba(30,59,44,.18)}
