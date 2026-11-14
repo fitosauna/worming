@@ -525,3 +525,12 @@ html[data-hide="1"]:not(.menu-open) .site-header{transform:translateY(-101%)}
 .cmp__stage{aspect-ratio:1/1}
 .cmp{padding-bottom:clamp(3rem,6vw,5rem)}
 @media (min-width:62rem){.cmp__stage{aspect-ratio:16/9}}
+/* One size for all section headings */
+:root{--step3:clamp(2.6rem,1.6rem + 5vw,4.1rem)}
+.cmp__copy .h2{font-size:var(--step3)}
+@media (min-width:62rem){
+  .beneath .h2,:lang(lv) .beneath .h2{font-size:var(--step3)}
+  .beneath__grid{grid-template-columns:13fr 1fr 12fr}
+  .cmp__grid{grid-template-columns:5fr 8fr;gap:3rem}
+}
+@media (min-width:62rem){.cmp__grid{grid-template-columns:6fr 8fr}}
