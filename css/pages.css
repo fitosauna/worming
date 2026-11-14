@@ -251,8 +251,13 @@
 /* Latvian: longer words need a smaller page heading */
 :lang(lv) .quote__side .h1{font-size:clamp(2.1rem,10.5vw,3rem);overflow-wrap:normal}
 @media (min-width:62rem){
-  :lang(lv) .ph--plain .h1{font-size:clamp(3.5rem,6.2vw,6rem)}
+  :lang(lv) .ph--plain .h1{font-size:clamp(3.5rem,7vw,6.75rem)}
   :lang(lv) .ph--plain{padding-top:clamp(7rem,11vw,9rem)}
   :lang(lv) .ph--image .ph__in .h1{max-width:16ch;font-size:clamp(3.25rem,5.6vw,5.5rem)}
   :lang(lv) .quote__side .h1{font-size:clamp(2.75rem,4.3vw,4.1rem)}
 }
+
+/* Applications header fills exactly one screen */
+.ph--plain:has(.seg-nav){min-height:100svh;display:flex;align-items:center;box-sizing:border-box;padding-bottom:clamp(2rem,5vw,4rem)}
+.ph--plain:has(.seg-nav) > .wrap{width:100%}
+@media (max-width:61.99rem){.ph--plain:has(.seg-nav){padding-top:6rem;align-items:flex-end}}
