@@ -534,3 +534,13 @@ html[data-hide="1"]:not(.menu-open) .site-header{transform:translateY(-101%)}
   .cmp__grid{grid-template-columns:5fr 8fr;gap:3rem}
 }
 @media (min-width:62rem){.cmp__grid{grid-template-columns:6fr 8fr}}
+/* Beneath: equal halves on desktop. Text and facts left, photo right at full height */
+@media (min-width:62rem){
+  .beneath__grid{grid-template-columns:1fr 1fr;gap:2.5rem 5rem;align-items:stretch}
+  .beneath__copy{grid-column:1;grid-row:1;position:static}
+  .beneath__side{display:contents}
+  .beneath__side > div{grid-column:1;grid-row:2}
+  .beneath__img{grid-column:2;grid-row:1 / span 2;aspect-ratio:auto;min-height:28rem;position:relative;margin-right:calc(var(--gut) * -1)}
+  .beneath__img picture{position:absolute;inset:0}
+  .beneath__img img{object-position:50% 50%}
+}
