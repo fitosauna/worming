@@ -109,6 +109,7 @@
   /* ---------- Applications explorer ---------- */
   var appItems = Array.prototype.slice.call(document.querySelectorAll('.apps li'));
   function activate(li) { appItems.forEach(function (x) { x.classList.toggle('is-active', x === li); }); }
+  if (appItems.length && (reduce || !('IntersectionObserver' in window))) appItems.forEach(function (li) { li.classList.add('seen'); });
   if (appItems.length) {
     var wide = window.matchMedia('(min-width: 62rem)');
     appItems.forEach(function (li) {
@@ -117,9 +118,8 @@
     });
     if ('IntersectionObserver' in window) {
       var io = new IntersectionObserver(function (es) {
-        if (wide.matches) return;
-        es.forEach(function (en) { if (en.isIntersecting) activate(en.target); });
-      }, { rootMargin: '-42% 0px -42% 0px' });
+        es.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('seen'); io.unobserve(en.target); } });
+      }, { rootMargin: '0px 0px -22% 0px', threshold: 0.35 });
       appItems.forEach(function (li) { io.observe(li); });
     }
   }
