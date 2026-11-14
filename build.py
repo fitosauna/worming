@@ -20,7 +20,8 @@ def close(title, btn='Request a quote', prev='sand'):
 PASSPORT = idx[idx.index('<div class="passport"'):idx.index('</section>', idx.index('<div class="passport"'))].rsplit('</div>', 1)[0]
 
 def page(fn, title, desc, body, head_theme='dark', extra_js='', solid=False):
-    c = chrome.replace(f'href="{fn}"', f'href="{fn}" aria-current="page"')
+    c = chrome.replace('<a href="index.html" aria-current="true" lang="en"', '<a href="@@SELF@@" aria-current="true" lang="en"').replace('href="lv/index.html" lang="lv"', f'href="lv/{fn}" lang="lv"')
+    c = c.replace(f'href="{fn}"', f'href="{fn}" aria-current="page"').replace('@@SELF@@', fn)
     html = f'''<!DOCTYPE html>
 <html lang="en" class="no-js" data-head="{head_theme}" data-mid="{head_theme}"{' data-solid' if solid else ''}>
 <head>
@@ -30,6 +31,7 @@ def page(fn, title, desc, body, head_theme='dark', extra_js='', solid=False):
 <meta name="description" content="{desc}">
 <link rel="preload" href="fonts/literata-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/onest-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="alternate" hreflang="lv" href="lv/{fn}">
 <link rel="stylesheet" href="css/site.css">
 <link rel="stylesheet" href="css/pages.css">
 <link rel="icon" href="images/logo/symbol-colour.png">
@@ -486,3 +488,7 @@ about = f"""
 {close('Let&rsquo;s talk about your crop.', prev='linen')}
 """
 page('about.html', 'About', 'Worming is a family business near Auce, Latvia, making worm humus for professional growers in 15 countries.', about)
+
+
+import build_lv
+build_lv.run()

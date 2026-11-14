@@ -5,12 +5,13 @@
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ---------- Content binding: one editable data file ---------- */
-  fetch('content/site.json').then(function (r) { return r.json(); }).then(function (d) {
+  var LV = doc.lang === 'lv';
+  fetch(LV ? '../content/site.lv.json' : 'content/site.json').then(function (r) { return r.json(); }).then(function (d) {
     document.querySelectorAll('[data-k]').forEach(function (el) {
       var v = el.getAttribute('data-k').split('.').reduce(function (o, k) { return o && o[k]; }, d);
       if (typeof v === 'string') {
         el.textContent = v;
-        if (/^to be confirmed/i.test(v)) el.classList.add('tbc');
+        if (/^(to be confirmed|tiks precizēts)/i.test(v)) el.classList.add('tbc');
       }
     });
   }).catch(function () {});
@@ -21,7 +22,7 @@
   function setMenu(open) {
     doc.classList.toggle('menu-open', open);
     btn.setAttribute('aria-expanded', String(open));
-    btn.querySelector('.menu-btn__t').textContent = open ? 'Close' : 'Menu';
+    btn.querySelector('.menu-btn__t').textContent = open ? (LV ? 'Aizvērt' : 'Close') : (LV ? 'Izvēlne' : 'Menu');
     menu.inert = !open;
     document.body.style.overflow = open ? 'hidden' : '';
   }

@@ -1,0 +1,32 @@
+{
+  "_note": "Latvian version of site.json. Keep the two files in step.",
+  "company": {
+    "legalName": "SIA „Worming”",
+    "regNo": "48503018418",
+    "address": "„Līči”, Vītiņu pagasts, Auces novads, LV-3721, Latvija",
+    "phone": "+371 20252517",
+    "phoneHref": "+37120252517",
+    "email": "tomsupenieks@gmail.com",
+    "copyrightYears": "2023–2027",
+    "founder": "Toms Upenieks"
+  },
+  "product": {
+    "name": "Biohumuss (vermikomposts)",
+    "type": "Apstrādāts organisks mēslošanas līdzeklis",
+    "ph": "7,3",
+    "organicMatter": "min. 20,1 %",
+    "n": "0,9 %",
+    "p2o5": "0,9 %",
+    "k2o": "0,7 %",
+    "moisture": "Tiks precizēts",
+    "screen": "Tiks precizēts",
+    "storage": "no −30 °C līdz +40 °C",
+    "storageNote": "Sargāt no lietus un tiešiem saules stariem."
+  },
+  "toConfirm": [
+    "Screen size and moisture",
+    "Formats (sack and big bag sizes), capacity, lead times",
+    "Production steps: maturation, screening, testing and how often batches are analysed",
+    "Whether batch-specific analysis is available with each quote"
+  ]
+}

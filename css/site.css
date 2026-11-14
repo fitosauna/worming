@@ -467,3 +467,17 @@ html[data-hide="1"]:not(.menu-open) .site-header{transform:translateY(-101%)}
 @media (min-width:62rem) and (max-width:78rem){.nav-desktop{gap:1.5rem;font-size:.95rem}}
 .menu-open .menu__links a:nth-child(5){transition-delay:.36s}
 @media (max-width:61.99rem){.menu__links a{font-size:clamp(2.1rem,9.6vw,3rem)}}
+
+/* Language switch */
+.lang{display:flex;align-items:center;gap:.1rem;margin-left:auto;margin-right:.35rem;font-size:.9rem;font-weight:500}
+.lang a{display:inline-flex;align-items:center;justify-content:center;min-width:2.4rem;min-height:2.75rem;text-decoration:none;opacity:.6}
+.lang a[aria-current]{opacity:1;text-decoration:underline;text-underline-offset:.3em;text-decoration-thickness:1.5px}
+.lang a + a{border-left:1px solid currentColor}
+@media (min-width:62rem){.lang{order:3;margin:0 0 0 1.5rem}.nav-desktop{margin-left:auto}}
+.nav-desktop a{white-space:nowrap}
+@media (min-width:62rem) and (max-width:82rem){
+  :lang(lv) .nav-desktop{gap:1.05rem;font-size:.86rem}
+  :lang(lv) .nav-cta{padding:.6rem .8rem}
+  :lang(lv) .logo{width:8.5rem}
+  :lang(lv) .lang{margin-left:.9rem}
+}
