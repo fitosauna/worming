@@ -231,14 +231,20 @@ quality = f'''
 <section class="sec sec--forest" data-theme="dark">
   <div class="wrap">
     <h2 class="h2">Production, step by step.</h2>
-    <div class="journey" id="journey"><span class="journey__fill" aria-hidden="true"></span><ol>
-      <li><h3>Feedstock</h3><p>Manure, vegetable matter and leaves come in and are prepared for the beds.</p></li>
-      <li><h3>Worm beds</h3><p>Californian red worms work through the material.</p><figure>{pic('production-beds', 'Long indoor beds of dark organic material', small='wide')}</figure></li>
-      <li><h3>Maturation</h3><p>The humus rests before it is harvested.</p></li>
-      <li><h3>Screening</h3><p>It is sieved to an even, fine crumb.</p><figure>{pic('production-screening', 'A rotary screen sieving dark humus', small='wide')}</figure></li>
-      <li><h3>Testing</h3><p>The material is checked against the specification.</p></li>
-      <li><h3>Packing</h3><p>It is filled, labelled and stored under cover until dispatch.</p><figure>{pic('supply-bigbags', 'Filled big bags on pallets', small='wide')}</figure></li>
-    </ol></div>
+    <div class="journey" id="journey"><span class="journey__fill" aria-hidden="true"></span>
+      <div class="jpair"><ol>
+        <li><h3>Feedstock</h3><p>Manure, vegetable matter and leaves come in and are prepared for the beds.</p></li>
+        <li><h3>Worm beds</h3><p>Californian red worms work through the material.</p></li>
+      </ol><figure>{pic('production-beds', 'Long indoor beds of dark organic material', small='wide')}</figure></div>
+      <div class="jpair"><ol start="3">
+        <li><h3>Maturation</h3><p>The humus rests before it is harvested.</p></li>
+        <li><h3>Screening</h3><p>It is sieved to an even, fine crumb.</p></li>
+      </ol><figure>{pic('production-screening', 'A rotary screen sieving dark humus', small='wide')}</figure></div>
+      <div class="jpair"><ol start="5">
+        <li><h3>Testing</h3><p>The material is checked against the specification.</p></li>
+        <li><h3>Packing</h3><p>It is filled, labelled and stored under cover until dispatch.</p></li>
+      </ol><figure>{pic('supply-bigbags', 'Filled big bags on pallets', small='wide')}</figure></div>
+    </div>
   </div>
 </section>
 

@@ -261,3 +261,18 @@
 .ph--plain:has(.seg-nav){min-height:100svh;display:flex;align-items:center;box-sizing:border-box;padding-bottom:clamp(2rem,5vw,4rem)}
 .ph--plain:has(.seg-nav) > .wrap{width:100%}
 @media (max-width:61.99rem){.ph--plain:has(.seg-nav){padding-top:6rem;align-items:flex-end}}
+
+/* Journey: one photo per pair of steps */
+.journey li{padding-bottom:clamp(1.75rem,5vw,3rem)}
+.journey .jpair figure{margin-top:0;margin-bottom:clamp(2.5rem,7vw,4rem)}
+.journey .jpair:last-child figure{margin-bottom:0}
+@media (min-width:62rem){
+  .journey li{display:block;padding-bottom:3.5rem}
+  .journey .jpair{display:grid;grid-template-columns:5fr 6fr;gap:0 4rem;align-items:stretch;padding-bottom:5rem}
+  .journey .jpair:last-child{padding-bottom:0}
+  .journey .jpair ol{align-self:start}
+  .journey .jpair li:last-child{padding-bottom:0}
+  .journey .jpair figure{grid-column:2;grid-row:1;margin:0;aspect-ratio:auto;min-height:22rem;position:relative}
+  .journey .jpair figure picture{position:absolute;inset:0}
+}
+@media (min-width:62rem){.journey .jpair{grid-template-columns:minmax(0,5fr) minmax(0,6fr)}:lang(lv) .journey h3{font-size:clamp(2.2rem,4.2vw,3.9rem)}}
