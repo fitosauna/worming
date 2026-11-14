@@ -409,3 +409,15 @@ html[data-hide="1"]:not(.menu-open) .site-header{transform:translateY(-101%)}
   .close__top::after{background:linear-gradient(to bottom,rgba(59,42,30,0) 36%,rgba(59,42,30,.5) 47%,rgba(59,42,30,.9) 55%,var(--earth) 60%)}
   .close__waves{height:14rem}
 }
+
+/* Closing scene v4 (desktop): shorter, slower fade, one brown, single curve */
+@media (min-width:62rem){
+  .close{min-height:max(44rem,78svh);padding-bottom:7.5rem}
+  .close__top picture{height:78%}
+  .close__top img{object-position:50% 72%}
+  .close__top::after{background:linear-gradient(to bottom,rgba(59,42,30,0) 26%,rgba(59,42,30,.12) 36%,rgba(59,42,30,.3) 45%,rgba(59,42,30,.52) 54%,rgba(59,42,30,.74) 62%,rgba(59,42,30,.9) 70%,var(--earth) 78%)}
+  .close__waves .w1,.close__waves .w2{display:none}
+  .close__waves{height:12rem}
+  .site-footer__grid{grid-template-columns:1fr auto}
+  .site-footer__co{grid-template-columns:auto auto auto;gap:3rem}
+}
