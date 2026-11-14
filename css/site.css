@@ -454,3 +454,11 @@ html[data-hide="1"]:not(.menu-open) .site-header{transform:translateY(-101%)}
   .apps__name{font-size:clamp(2.2rem,3.6vw,3.8rem)}
   .apps{min-height:0}
 }
+/* Applications (desktop): image always exactly as tall as the list */
+@media (min-width:62rem){
+  .apps__img{top:0;bottom:0;height:100% !important;aspect-ratio:auto}
+  .apps__name{font-size:clamp(1.9rem,2.9vw,3rem)}
+  .apps a{padding:1.5rem 0 1.6rem}
+  .apps__note{margin-top:.45rem;font-size:1rem}
+  .apps li.is-active .apps__name{transform:translateX(.9rem)}
+}
