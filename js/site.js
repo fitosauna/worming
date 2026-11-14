@@ -106,6 +106,25 @@
   onScroll();
   if (stage) { drawSurface(surface, t0); if (!reduce) requestAnimationFrame(frame); }
 
+  /* ---------- About: roots scene ---------- */
+  var roots = document.querySelector('.roots');
+  if (roots && !reduce && 'CSS' in window && CSS.supports('clip-path', 'url(#a)')) {
+    roots.classList.add('roots--live');
+    var rc1 = document.getElementById('rc1p'), rc2 = document.getElementById('rc2p');
+    var wave = function (el, t) {
+      t = Math.min(1, Math.max(0, t)); var e = t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+      var y = 1.12 - e * 1.24;
+      el.setAttribute('d', 'M0,' + (y + 0.02).toFixed(4) + ' C0.3,' + (y - 0.035).toFixed(4) + ' 0.62,' + (y + 0.04).toFixed(4) + ' 1,' + (y - 0.02).toFixed(4) + ' L1,1.4 L0,1.4 Z');
+    };
+    var rootsScroll = function () {
+      var p = (window.scrollY - roots.offsetTop) / (roots.offsetHeight - window.innerHeight);
+      wave(rc1, (p - 0.1) / 0.34); wave(rc2, (p - 0.56) / 0.34);
+    };
+    window.addEventListener('scroll', rootsScroll, { passive: true });
+    window.addEventListener('resize', rootsScroll);
+    rootsScroll();
+  }
+
   /* ---------- Applications explorer ---------- */
   var appItems = Array.prototype.slice.call(document.querySelectorAll('.apps li'));
   function activate(li) { appItems.forEach(function (x) { x.classList.toggle('is-active', x === li); }); }

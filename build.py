@@ -403,3 +403,86 @@ company = '''
 </section>
 '''
 page('company.html', 'Company details', 'Legal and contact details of SIA Worming, Latvia.', company, head_theme='light')
+
+# ---------------------------------------------------------------- ABOUT
+def img1(name, alt=''):
+    return f'<img src="{P}{name}.jpg" alt="{alt}" loading="lazy">'
+
+about = f"""
+<section class="roots" data-theme="dark" aria-label="Why Worming exists">
+  <div class="roots__stage">
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+      <clipPath id="rc1" clipPathUnits="objectBoundingBox"><path id="rc1p" d="M0,1.2 L1,1.2 L1,1.3 L0,1.3 Z"/></clipPath>
+      <clipPath id="rc2" clipPathUnits="objectBoundingBox"><path id="rc2p" d="M0,1.2 L1,1.2 L1,1.3 L0,1.3 Z"/></clipPath>
+    </defs></svg>
+    <div class="roots__layer roots__layer--1">
+      <picture><source media="(min-aspect-ratio:1/1)" srcset="{P}about-table-wide.jpg"><img src="{P}about-table-tall.jpg" alt="Freshly harvested vegetables on a wooden table" fetchpriority="high"></picture>
+      <p class="roots__say">Good health starts with good food.</p>
+    </div>
+    <div class="roots__layer roots__layer--2">
+      <img src="{P}about-roots-tall.jpg" alt="A young plant lifted from the soil, roots showing">
+      <p class="roots__say">Good food starts with healthy soil.</p>
+    </div>
+    <div class="roots__layer roots__layer--3">
+      <picture><source media="(min-aspect-ratio:1/1)" srcset="{P}hero-below-wide.jpg"><img src="{P}hero-below-tall.jpg" alt=""></picture>
+      <p class="roots__say">Healthy soil starts here.</p>
+    </div>
+    <h1 class="roots__plate">About Worming<br><span>Founded 2023, near Auce, Latvia</span></h1>
+  </div>
+</section>
+
+<section class="sec sec--linen" data-theme="light">
+  <div class="wrap why">
+    <div class="why__text">
+      <h2 class="h2" style="color:var(--forest)">Why we started.</h2>
+      <p class="why__lede">Worming was founded in 2023 on a simple belief: good health starts with good food, and good food starts with healthy soil.</p>
+      <p>We care about nutrition, wellbeing and sustainable agriculture. Making worm humus is how we support the growers who produce high-quality organic food.</p>
+    </div>
+    <figure class="why__img">{img1('about-founder-tall', 'Portrait at the farm near Auce')}</figure>
+  </div>
+</section>
+
+<section class="sec sec--forest gen" data-theme="dark">
+  <figure class="gen__img">{img1('about-generations-wide', 'Two generations of the family beside a bed of worm humus')}</figure>
+  <div class="wrap">
+    <h2 class="h2 gen__title">Two generations of family farming.</h2>
+    <p class="lede muted" style="margin-top:1.5rem;max-width:38ch">Worming is built on practical farming knowledge passed from one generation to the next, combined with a modern approach to sustainable production and international business.</p>
+  </div>
+</section>
+
+<section class="sec sec--sand" data-theme="light">
+  <div class="wrap place">
+    <div>
+      <h2 class="h2">Made near Auce. Supplied to 15 countries.</h2>
+      <p class="lede" style="margin-top:1.5rem;max-width:36ch">Our production site is near Auce, Latvia. We manage the whole biohumus process there, from raw materials to finished product.</p>
+      <dl class="place__figs">
+        <div><dd class="num">2023</dd><dt>Founded</dt></div>
+        <div><dd class="num">15</dd><dt>Countries supplied</dt></div>
+        <div><dd class="num">1</dd><dt>Product</dt></div>
+      </dl>
+    </div>
+    <div class="place__imgs">
+      <figure>{img1('about-farm-wide', 'The production building in the Latvian countryside')}</figure>
+      <figure>{img1('about-loading-wide', 'Big bags being loaded onto a truck by forklift')}</figure>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--linen" data-theme="light">
+  <div class="wrap how">
+    <div>
+      <h2 class="h2" style="color:var(--forest)">How we work.</h2>
+      <p class="muted" style="margin-top:1.25rem;max-width:28rem">We believe good business starts with honest communication, and we want long-term relationships with the growers we supply.</p>
+    </div>
+    <ul class="rows">
+      <li><h3>Direct from the manufacturer</h3><p>Competitive pricing, with no middlemen between you and the producer.</p></li>
+      <li><h3>Personal, responsive service</h3><p>You deal with the people who make the product.</p></li>
+      <li><h3>Flexible bulk supply</h3><p>Volumes to suit your operation and season.</p></li>
+      <li><h3>Simple purchasing</h3><p>A clear quote, clear terms and no surprises.</p></li>
+      <li><h3>Who we supply</h3><p>Substrate manufacturers, commercial greenhouses, nurseries, orchards, vineyards and organic vegetable growers.</p></li>
+    </ul>
+  </div>
+</section>
+{close('Let&rsquo;s talk about your crop.', prev='linen')}
+"""
+page('about.html', 'About', 'Worming is a family business near Auce, Latvia, making worm humus for professional growers in 15 countries.', about)
