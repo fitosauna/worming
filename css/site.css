@@ -492,3 +492,11 @@ html[data-hide="1"]:not(.menu-open) .site-header{transform:translateY(-101%)}
   .steps p{max-width:none}
 }
 @media (min-width:62rem){:lang(lv) .beneath .h2{font-size:clamp(3rem,5.1vw,4.7rem)}}
+/* Beneath section: calmer hierarchy */
+.facts dd{font-size:clamp(1.15rem,1rem + .45vw,1.35rem);line-height:1.3}
+@media (min-width:62rem){
+  .beneath__grid{grid-template-columns:6fr 1fr 6fr}
+  .beneath .h2,:lang(lv) .beneath .h2{max-width:none;font-size:clamp(2.75rem,4.3vw,3.9rem);text-wrap:balance}
+  .facts div{grid-template-columns:10rem 1fr;gap:1.5rem;align-items:baseline;padding:1rem 0}
+  .beneath__side{gap:2.25rem}
+}
