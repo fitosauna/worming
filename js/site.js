@@ -111,6 +111,7 @@
   if (roots && !reduce && 'CSS' in window && CSS.supports('clip-path', 'url(#a)')) {
     roots.classList.add('roots--live');
     var rc1 = document.getElementById('rc1p'), rc2 = document.getElementById('rc2p');
+    var plate = roots.querySelector('.roots__plate');
     var wave = function (el, t) {
       t = Math.min(1, Math.max(0, t)); var e = t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
       var y = 1.12 - e * 1.24;
@@ -119,6 +120,7 @@
     var rootsScroll = function () {
       var p = (window.scrollY - roots.offsetTop) / (roots.offsetHeight - window.innerHeight);
       wave(rc1, (p - 0.1) / 0.34); wave(rc2, (p - 0.56) / 0.34);
+      if (plate) { var o = Math.min(1, Math.max(0, 1 - (p - 0.03) / 0.09)); plate.style.opacity = o.toFixed(2); plate.style.visibility = o === 0 ? 'hidden' : 'visible'; }
     };
     window.addEventListener('scroll', rootsScroll, { passive: true });
     window.addEventListener('resize', rootsScroll);

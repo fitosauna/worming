@@ -242,3 +242,8 @@
 .why__fig figcaption{display:flex;flex-direction:column;margin-top:.9rem;padding-top:.7rem;border-top:1.5px solid var(--forest);color:var(--forest)}
 .why__fig figcaption strong{font-family:var(--serif);font-variation-settings:"opsz" 36;font-weight:600;font-size:1.4rem;line-height:1.2}
 .why__fig figcaption span{font-size:var(--step-1);color:var(--ink-soft)}
+/* About label: solid tag in the batch-passport style, first photo only */
+.roots__plate{background:var(--linen);color:var(--forest);border:1.5px solid var(--forest);border-top:1.5px solid var(--forest);padding:.7rem 1rem .75rem;box-shadow:.4rem .4rem 0 var(--earth);font-family:var(--serif);font-variation-settings:"opsz" 36;font-weight:600;font-size:1.35rem;line-height:1.15;transition:opacity .25s linear}
+.roots__plate span{display:block;margin-top:.35rem;padding-top:.4rem;border-top:1.5px dashed var(--forest);font:400 .84rem/1.3 var(--sans);color:var(--ink-soft)}
+.roots__plate br{display:none}
+@media (min-width:62rem){.roots__plate{font-size:1.6rem;padding:.9rem 1.25rem 1rem;top:8rem}.roots__plate span{font-size:.92rem}}
