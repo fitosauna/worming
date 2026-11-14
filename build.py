@@ -429,7 +429,7 @@ about = f"""
       <picture><source media="(min-aspect-ratio:1/1)" srcset="{P}hero-below-wide.jpg"><img src="{P}hero-below-tall.jpg" alt=""></picture>
       <p class="roots__say">Healthy soil starts here.</p>
     </div>
-    <h1 class="roots__plate">About Worming<br><span>Founded 2023, near Auce, Latvia</span></h1>
+    <h1 class="roots__plate">About Worming<br><span>Founded 2023 in Auce, Latvia</span></h1>
   </div>
 </section>
 
@@ -440,7 +440,7 @@ about = f"""
       <p class="why__lede">Worming was founded in 2023 on a simple belief: good health starts with good food, and good food starts with healthy soil.</p>
       <p>We care about nutrition, wellbeing and sustainable agriculture. Making worm humus is how we support the growers who produce high-quality organic food.</p>
     </div>
-    <figure class="why__fig"><div class="why__img">{img1('about-founder-tall', 'Toms Upenieks at the farm near Auce')}</div><figcaption><strong>Toms Upenieks</strong><span>Founder</span></figcaption></figure>
+    <figure class="why__fig"><div class="why__img">{img1('about-founder-tall', 'Toms Upenieks at the farm in Auce')}</div><figcaption><strong>Toms Upenieks</strong><span>Founder</span></figcaption></figure>
   </div>
 </section>
 
@@ -455,8 +455,8 @@ about = f"""
 <section class="sec sec--sand" data-theme="light">
   <div class="wrap place">
     <div>
-      <h2 class="h2">Made near Auce. Supplied to 15 countries.</h2>
-      <p class="lede" style="margin-top:1.5rem;max-width:36ch">Our production site is near Auce, Latvia. We manage the whole biohumus process there, from raw materials to finished product.</p>
+      <h2 class="h2">Made in Auce. Supplied to 15 countries.</h2>
+      <p class="lede" style="margin-top:1.5rem;max-width:36ch">Our production site is in Auce, Latvia. We manage the whole biohumus process there, from raw materials to finished product.</p>
       <dl class="place__figs">
         <div><dd class="num">2023</dd><dt>Founded</dt></div>
         <div><dd class="num">15</dd><dt>Countries supplied</dt></div>
@@ -487,7 +487,7 @@ about = f"""
 </section>
 {close('Let&rsquo;s talk about your crop.', prev='linen')}
 """
-page('about.html', 'About', 'Worming is a family business near Auce, Latvia, making worm humus for professional growers in 15 countries.', about)
+page('about.html', 'About', 'Worming is a family business in Auce, Latvia, making worm humus for professional growers in 15 countries.', about)
 
 
 import build_lv
