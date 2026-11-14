@@ -482,3 +482,13 @@ html[data-hide="1"]:not(.menu-open) .site-header{transform:translateY(-101%)}
   :lang(lv) .lang{margin-left:.9rem}
 }
 @media (max-width:26rem){:lang(lv) .hero__cta{gap:.5rem}:lang(lv) .hero__cta .btn{font-size:.8rem;padding-inline:.6rem;letter-spacing:0}}
+/* Production steps: vertical timeline on phones (no hidden sideways scroll) */
+@media (max-width:61.99rem){
+  .steps{display:grid;gap:0;overflow:visible;scroll-snap-type:none;margin-inline:0;padding-inline:0;margin-top:2.25rem}
+  .steps li{flex:none;border-top:0;border-left:1.5px solid var(--sage);padding:0 0 1.4rem 1.35rem}
+  .steps li:last-child{padding-bottom:0}
+  .steps li::before{left:-5.25px;top:.55rem}
+  .steps h3{font-size:1.3rem}
+  .steps p{max-width:none}
+}
+@media (min-width:62rem){:lang(lv) .beneath .h2{font-size:clamp(3rem,5.1vw,4.7rem)}}
