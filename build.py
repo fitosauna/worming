@@ -451,7 +451,7 @@ about = f"""
 </section>
 
 <section class="sec sec--forest gen" data-theme="dark">
-  <figure class="gen__img">{img1('about-generations-wide', 'Two generations of the family beside a bed of worm humus')}</figure>
+  <figure class="gen__img">{pic('about-generations', 'Two generations of the family beside a bed of worm humus')}</figure>
   <div class="wrap">
     <h2 class="h2 gen__title">Two generations of family farming.</h2>
     <p class="lede muted" style="margin-top:1.5rem;max-width:38ch">Worming is built on practical farming knowledge passed from one generation to the next, combined with a modern approach to sustainable production and international business.</p>
