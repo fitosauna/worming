@@ -5,7 +5,8 @@ name: Deploy to SiteGround
 #   SG_HOST     SSH hostname from SiteGround Site Tools > Devs > SSH Keys Manager > Manage > SSH Credentials
 #   SG_PORT     SSH port (SiteGround uses 18765)
 #   SG_USER     SSH username (looks like u123-abc456def789)
-#   SG_SSH_KEY  private key whose public half is imported in SiteGround (no passphrase)
+#   SG_SSH_KEY  private key from SiteGround SSH Keys Manager (or your own key)
+#   SG_SSH_PASSPHRASE  the key's password, if it has one
 #   SG_PATH     target folder, e.g. www/wormingbio.com/public_html/  (keep the trailing slash)
 
 on:
@@ -43,10 +44,15 @@ jobs:
           SG_SSH_KEY: ${{ secrets.SG_SSH_KEY }}
           SG_HOST: ${{ secrets.SG_HOST }}
           SG_PORT: ${{ secrets.SG_PORT }}
+          SG_SSH_PASSPHRASE: ${{ secrets.SG_SSH_PASSPHRASE }}
         run: |
           mkdir -p ~/.ssh
-          printf '%s\n' "$SG_SSH_KEY" > ~/.ssh/siteground
+          printf '%s\n' "$SG_SSH_KEY" | tr -d '\r' > ~/.ssh/siteground
           chmod 600 ~/.ssh/siteground
+          # SiteGround keys have a password: remove it from this temporary copy so rsync can run unattended.
+          if [ -n "$SG_SSH_PASSPHRASE" ]; then
+            ssh-keygen -p -q -P "$SG_SSH_PASSPHRASE" -N "" -f ~/.ssh/siteground
+          fi
           ssh-keyscan -p "${SG_PORT:-18765}" "$SG_HOST" >> ~/.ssh/known_hosts 2>/dev/null
 
       - name: Upload files
