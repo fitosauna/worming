@@ -67,3 +67,19 @@ jobs:
           rsync -rlvz --exclude-from=.deployignore \
             -e "ssh -p ${SG_PORT:-18765} -i ~/.ssh/siteground" \
             ./ "$SG_USER@$SG_HOST:$SG_PATH"
+
+      - name: Flush SiteGround dynamic cache
+        if: steps.check.outputs.ready == 'true'
+        continue-on-error: true
+        env:
+          SG_HOST: ${{ secrets.SG_HOST }}
+          SG_PORT: ${{ secrets.SG_PORT }}
+          SG_USER: ${{ secrets.SG_USER }}
+          SG_PATH: ${{ secrets.SG_PATH }}
+        run: |
+          # The domain is the folder name in SG_PATH (www/<domain>/public_html/).
+          DOMAIN=$(echo "$SG_PATH" | sed -E 's#^.*www/([^/]+)/.*$#\1#')
+          echo "Purging https://$DOMAIN/*"
+          ssh -p "${SG_PORT:-18765}" -i ~/.ssh/siteground "$SG_USER@$SG_HOST" \
+            "curl -s -o /dev/null -w '%{http_code}\n' -k -X PURGE 'https://$DOMAIN/*'" || true
+          curl -s -o /dev/null -w '%{http_code}\n' -X PURGE "https://$DOMAIN/*" || true
