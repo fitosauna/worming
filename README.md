@@ -13,3 +13,8 @@ Open items are listed in `content/site.json` under `toConfirm`.
 ## Languages
 
 English pages are in the root, Latvian pages in `lv/`. `build.py` generates both. Latvian text lives in `i18n/lv.json` (English string on the left, Latvian on the right) and `content/site.lv.json`. If English text changes, update the matching entry in `i18n/lv.json`; the build prints any untranslated strings.
+
+## Deployment (SiteGround)
+
+`.github/workflows/deploy-siteground.yml` uploads the site to SiteGround on every push to `main`. Build scripts, `i18n/` and this README are skipped (see `.deployignore`). Run `python3 build.py` and commit the generated pages before pushing.
+Set the repository secrets `SG_HOST`, `SG_PORT`, `SG_USER`, `SG_SSH_KEY` and `SG_PATH` (for this site: `www/wormingbio.com/public_html/`). Until they are set, the workflow skips the deploy.

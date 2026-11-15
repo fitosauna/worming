@@ -1,0 +1,7 @@
+.git
+.github
+.deployignore
+README.md
+__pycache__
+*.py
+i18n

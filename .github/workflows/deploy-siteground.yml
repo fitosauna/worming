@@ -1,0 +1,63 @@
+name: Deploy to SiteGround
+
+# Uploads the site to SiteGround over SSH every time main changes.
+# Needs these repository secrets (Settings > Secrets and variables > Actions):
+#   SG_HOST     SSH hostname from SiteGround Site Tools > Devs > SSH Keys Manager > Manage > SSH Credentials
+#   SG_PORT     SSH port (SiteGround uses 18765)
+#   SG_USER     SSH username (looks like u123-abc456def789)
+#   SG_SSH_KEY  private key whose public half is imported in SiteGround (no passphrase)
+#   SG_PATH     target folder, e.g. www/wormingbio.com/public_html/  (keep the trailing slash)
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-siteground
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check secrets
+        id: check
+        env:
+          SG_HOST: ${{ secrets.SG_HOST }}
+          SG_PATH: ${{ secrets.SG_PATH }}
+        run: |
+          if [ -z "$SG_HOST" ] || [ -z "$SG_PATH" ]; then
+            echo "SiteGround secrets are not set yet, skipping deploy."
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/checkout@v4
+        if: steps.check.outputs.ready == 'true'
+
+      - name: Set up SSH
+        if: steps.check.outputs.ready == 'true'
+        env:
+          SG_SSH_KEY: ${{ secrets.SG_SSH_KEY }}
+          SG_HOST: ${{ secrets.SG_HOST }}
+          SG_PORT: ${{ secrets.SG_PORT }}
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s\n' "$SG_SSH_KEY" > ~/.ssh/siteground
+          chmod 600 ~/.ssh/siteground
+          ssh-keyscan -p "${SG_PORT:-18765}" "$SG_HOST" >> ~/.ssh/known_hosts 2>/dev/null
+
+      - name: Upload files
+        if: steps.check.outputs.ready == 'true'
+        env:
+          SG_HOST: ${{ secrets.SG_HOST }}
+          SG_PORT: ${{ secrets.SG_PORT }}
+          SG_USER: ${{ secrets.SG_USER }}
+          SG_PATH: ${{ secrets.SG_PATH }}
+        run: |
+          # No --delete: files already on the server (SiteGround's .htaccess, SSL files) are left alone.
+          rsync -rlvz --exclude-from=.deployignore \
+            -e "ssh -p ${SG_PORT:-18765} -i ~/.ssh/siteground" \
+            ./ "$SG_USER@$SG_HOST:$SG_PATH"
