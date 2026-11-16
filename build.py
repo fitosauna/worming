@@ -498,3 +498,21 @@ page('about.html', 'About', 'Worming is a family business in Auce, Latvia, makin
 
 import build_lv
 build_lv.run()
+
+
+# Cache-busting: stamp CSS/JS links with a content hash so browsers and the
+# host's static cache fetch new files as soon as they change.
+import hashlib, re as _re, glob as _glob
+def _stamp():
+    here = pathlib.Path(__file__).parent
+    for f in _glob.glob(str(here / '*.html')) + _glob.glob(str(here / 'lv' / '*.html')):
+        s = open(f, encoding='utf-8').read()
+        def rep(m):
+            asset = here / m.group(2)
+            if not asset.exists(): return m.group(0)
+            v = hashlib.md5(asset.read_bytes()).hexdigest()[:8]
+            return f'{m.group(1)}{m.group(2)}?v={v}"'
+        s2 = _re.sub(r'((?:href|src)="(?:\.\./)?)((?:css|js)/[\w.-]+\.(?:css|js))(?:\?v=\w+)?"', rep, s)
+        if s2 != s: open(f, 'w', encoding='utf-8').write(s2)
+    print('stamped css/js versions')
+_stamp()
