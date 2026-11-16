@@ -149,22 +149,22 @@
   </div>
 </section>
 
-<!-- COMPARE: with / without, divided by the surface line -->
+<!-- COMPARE: with / without, seen through a lens -->
 <section class="sec sec--linen cmp" data-theme="light">
   <div class="wrap cmp__grid">
     <div class="cmp__copy">
       <h2 class="h2" style="color:var(--forest)">With and without.</h2>
-      <p class="muted">Tomato seedlings in a standard mix, and in a mix with worm humus. Drag the line to compare.</p>
+      <p class="muted">Tomato seedlings in a standard mix, and in a mix with worm humus. Move the glass over the tray to compare.</p>
     </div>
-    <figure class="cmp__stage" id="compare">
-      <img class="cmp__img" src="images/placeholder/compare-seedlings-with.jpg" alt="Tomato seedlings grown in a mix with worm humus: dense, dark green and even" loading="lazy" width="1536" height="1024">
-      <img class="cmp__img cmp__top" src="images/placeholder/compare-seedlings-without.jpg" alt="The same tray grown without worm humus: smaller, paler seedlings with gaps" loading="lazy" width="1536" height="1024">
-      <svg class="cmp__line" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><path d="M50 0L50 100"/></svg>
+    <div class="cmp__main">
+    <figure class="cmp__stage lens" id="compare">
+      <img class="cmp__img" src="images/placeholder/compare-seedlings-without.jpg" alt="Tomato seedlings grown without worm humus: smaller, paler seedlings with gaps" loading="lazy" width="1536" height="1024">
+      <img class="cmp__img cmp__top" src="images/placeholder/compare-seedlings-with.jpg" alt="The same tray grown in a mix with worm humus: dense, dark green and even" loading="lazy" width="1536" height="1024">
       <span class="cmp__tag cmp__tag--a" aria-hidden="true">Without biohumus</span>
-      <span class="cmp__tag cmp__tag--b" aria-hidden="true">With biohumus</span>
-      <span class="cmp__knob" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20"><path d="M9 6l-5 6 5 6M15 6l5 6-5 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-      <input class="cmp__range" type="range" min="4" max="96" value="50" aria-label="Move the line between seedlings without and with biohumus">
+      <span class="lens__ring" aria-hidden="true"><span>With biohumus</span></span>
     </figure>
+    <button class="lens__btn" id="compare-full" type="button" aria-pressed="false">Show full tray</button>
+    </div>
   </div>
 </section>
 

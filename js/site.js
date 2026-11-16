@@ -156,46 +156,40 @@
   } else { rv.forEach(function (el) { el.classList.add('in'); }); }
 })();
 
-/* Compare: with / without, split by a living surface line */
+/* Compare: with / without, seen through a lens */
 (function () {
   var st = document.getElementById('compare'); if (!st) return;
-  var top = st.querySelector('.cmp__top'), path = st.querySelector('.cmp__line path'), knob = st.querySelector('.cmp__knob'), range = st.querySelector('.cmp__range');
-  var calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var pos = 50, touched = false, N = 28;
-  function draw() {
-    var pts = [], d = '', mid = pos, r = st.getBoundingClientRect(), amp = calm ? 0 : Math.min(1.5, 900 / Math.max(r.width, 1) * 1.1);
-    for (var i = 0; i <= N; i++) {
-      var y = i / N * 100, x = pos + amp * Math.sin(y / 100 * Math.PI * 2.6 + pos * 0.16) + amp * 0.4 * Math.sin(y / 100 * Math.PI * 6 - pos * 0.1);
-      if (i === N / 2) mid = x;
-      pts.push(x.toFixed(2) + '% ' + y.toFixed(2) + '%'); d += (i ? 'L' : 'M') + x.toFixed(2) + ' ' + y.toFixed(2);
-    }
-    top.style.clipPath = 'polygon(0 0,' + pts.join(',') + ',0 100%)';
-    path.setAttribute('d', d); knob.style.left = mid + '%';
-    st.style.setProperty('--a', Math.max(0, Math.min(1, (pos - 12) / 14)));
-    st.style.setProperty('--b', Math.max(0, Math.min(1, (88 - pos) / 14)));
+  var top = st.querySelector('.cmp__top'), ring = st.querySelector('.lens__ring'), btn = document.getElementById('compare-full');
+  var calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches, lv = document.documentElement.lang === 'lv';
+  var L = lv ? ['Rādīt visu kaseti', 'Atpakaļ pie lupas'] : ['Show full tray', 'Back to the lens'];
+  var x = 0, y = 0, touched = false, full = false, seen = false, t0 = 0, drag = false;
+  function place() {
+    if (full) return;
+    top.style.clipPath = 'circle(' + (ring.offsetWidth / 2) + 'px at ' + x.toFixed(1) + 'px ' + y.toFixed(1) + 'px)';
+    ring.style.transform = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px)';
   }
-  function set(v) { pos = Math.max(4, Math.min(96, v)); range.value = Math.round(pos); draw(); }
-  function fromEvent(e) { var r = st.getBoundingClientRect(); set((e.clientX - r.left) / r.width * 100); }
-  var drag = false;
-  st.addEventListener('pointerdown', function (e) { if (e.button) return; drag = true; touched = true; st.classList.add('is-drag'); try { st.setPointerCapture(e.pointerId); } catch (x) {} fromEvent(e); });
-  st.addEventListener('pointermove', function (e) { if (drag) fromEvent(e); });
-  ['pointerup', 'pointercancel'].forEach(function (n) { st.addEventListener(n, function () { drag = false; st.classList.remove('is-drag'); }); });
-  range.addEventListener('input', function () { touched = true; pos = +range.value; draw(); });
-  window.addEventListener('resize', draw);
-  draw();
+  function rest() { var b = st.getBoundingClientRect(); x = b.width * .6; y = b.height * .46; place(); }
+  function fromEvent(e) { var b = st.getBoundingClientRect(); x = Math.max(0, Math.min(b.width, e.clientX - b.left)); y = Math.max(0, Math.min(b.height, e.clientY - b.top)); place(); }
+  function drift(ts) {
+    if (touched || !seen) return;
+    if (!t0) t0 = ts;
+    var b = st.getBoundingClientRect(), t = (ts - t0) / 1000;
+    x = b.width * (.5 + .27 * Math.sin(t * .55 + .4)); y = b.height * (.46 + .15 * Math.sin(t * .8 + 1));
+    place(); requestAnimationFrame(drift);
+  }
+  st.addEventListener('pointermove', function (e) { if (e.pointerType === 'mouse') { touched = true; fromEvent(e); } });
+  ring.addEventListener('pointerdown', function (e) { drag = true; touched = true; try { ring.setPointerCapture(e.pointerId); } catch (z) {} e.preventDefault(); });
+  ring.addEventListener('pointermove', function (e) { if (drag) fromEvent(e); });
+  ['pointerup', 'pointercancel'].forEach(function (n) { ring.addEventListener(n, function () { drag = false; }); });
+  btn.addEventListener('click', function () {
+    full = !full; st.classList.add('is-anim'); st.classList.toggle('is-full', full);
+    btn.setAttribute('aria-pressed', full); btn.textContent = L[full ? 1 : 0];
+    if (full) top.style.clipPath = 'circle(150% at ' + x.toFixed(1) + 'px ' + y.toFixed(1) + 'px)'; else place();
+    setTimeout(function () { st.classList.remove('is-anim'); }, 850);
+  });
+  window.addEventListener('resize', function () { if (touched || calm) { var b = st.getBoundingClientRect(); x = Math.min(x, b.width); y = Math.min(y, b.height); if (!touched) rest(); else place(); } });
+  rest();
   if (!calm && 'IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function (es) {
-      if (!es[0].isIntersecting) return; io.disconnect();
-      var t0 = null, keys = [50, 70, 34, 50];
-      function ease(t) { return t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2; }
-      function step(ts) {
-        if (touched) return; if (!t0) t0 = ts;
-        var t = Math.min((ts - t0) / 2100, 1) * 3, i = Math.min(Math.floor(t), 2);
-        set(keys[i] + (keys[i + 1] - keys[i]) * ease(t - i));
-        if (t < 3) requestAnimationFrame(step);
-      }
-      setTimeout(function () { requestAnimationFrame(step); }, 350);
-    }, { threshold: .55 });
-    io.observe(st);
+    new IntersectionObserver(function (es) { seen = es[0].isIntersecting; t0 = 0; if (seen && !touched) requestAnimationFrame(drift); }, { threshold: .25 }).observe(st);
   }
 })();

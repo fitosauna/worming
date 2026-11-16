@@ -544,3 +544,17 @@ html[data-hide="1"]:not(.menu-open) .site-header{transform:translateY(-101%)}
   .beneath__img picture{position:absolute;inset:0}
   .beneath__img img{object-position:50% 50%}
 }
+/* Compare: the lens */
+.cmp__stage.lens{cursor:none;touch-action:pan-y;--d:clamp(9rem,40vw,13rem)}
+.lens .cmp__top{clip-path:circle(0 at 60% 46%)}
+.lens.is-anim .cmp__top{transition:clip-path .8s cubic-bezier(.3,.7,.2,1)}
+.lens__ring{position:absolute;left:0;top:0;width:var(--d);height:var(--d);margin:calc(var(--d) / -2) 0 0 calc(var(--d) / -2);border-radius:50%;border:2px solid var(--linen);box-shadow:0 0 0 1px rgba(42,29,20,.25),0 10px 40px rgba(42,29,20,.45);touch-action:none;transition:opacity .4s}
+.lens__ring span{position:absolute;left:50%;top:100%;transform:translate(-50%,.5rem);background:var(--forest);color:var(--linen);font-size:.8rem;font-weight:500;line-height:1;padding:.4rem .65rem;white-space:nowrap}
+.lens.is-full .lens__ring{opacity:0;pointer-events:none}
+.lens.is-full{cursor:default}
+.lens .cmp__tag--a{opacity:1;transition:opacity .4s}
+.lens.is-full .cmp__tag--a{opacity:0}
+.lens__btn{margin-top:1rem;display:inline-flex;align-items:center;min-height:2.75rem;padding:.6rem 1.1rem;border:1.5px solid var(--forest);background:transparent;color:var(--forest);font:inherit;font-size:.95rem;font-weight:500;line-height:1;cursor:pointer}
+.lens__btn:hover{background:var(--forest);color:var(--linen)}
+.lens__btn:focus-visible{outline:3px solid var(--forest);outline-offset:3px}
+@media (min-width:62rem){.cmp__stage.lens{--d:clamp(12rem,17vw,16rem)}}
