@@ -558,3 +558,6 @@ html[data-hide="1"]:not(.menu-open) .site-header{transform:translateY(-101%)}
 .lens__btn:hover{background:var(--forest);color:var(--linen)}
 .lens__btn:focus-visible{outline:3px solid var(--forest);outline-offset:3px}
 @media (min-width:62rem){.cmp__stage.lens{--d:clamp(12rem,17vw,16rem)}}
+.lens .cmp__tag--a{bottom:auto;top:1rem}
+.lens__btn:hover{background:transparent;color:var(--forest)}
+@media (hover:hover){.lens__btn:hover{background:var(--forest);color:var(--linen)}}
