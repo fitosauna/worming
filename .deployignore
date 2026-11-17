@@ -5,3 +5,5 @@ README.md
 __pycache__
 *.py
 i18n
+font-lab.html
+fonts/lab
