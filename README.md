@@ -18,3 +18,11 @@ English pages are in the root, Latvian pages in `lv/`. `build.py` generates both
 
 `.github/workflows/deploy-siteground.yml` uploads the site to SiteGround on every push to `main`. Build scripts, `i18n/` and this README are skipped (see `.deployignore`). Run `python3 build.py` and commit the generated pages before pushing.
 Set the repository secrets `SG_HOST`, `SG_PORT`, `SG_USER`, `SG_SSH_KEY` and `SG_PATH` (for this site: `www/wormingbio.com/public_html/`). Until they are set, the workflow skips the deploy.
+
+## Design system (short)
+
+- **Colour:** Forest `#1E3B2C`, Sage `#A8B89E`, Linen `#F4F5F1`, Earth `#3B2A1E`, Sand `#D8CDB8`. No gradients except the photo fades in the hero and closing scene.
+- **Type:** Literata (headings, weight 560; hero and page titles 640) and Onest (text and UI). Sizes come from the `--step-1` to `--step3` tokens in `css/site.css`; nothing is set below 13px.
+- **Headings:** every section heading uses `.h2` (`--step3`); page titles use `.h1`.
+- **Spacing:** all sections use `--section` for vertical padding; side gutters use `--gut`.
+- **Components:** square-cornered buttons, 1px hairline rules, flat cards with no shadows or tilt.

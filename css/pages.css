@@ -277,3 +277,15 @@
   .journey .jpair figure picture{position:absolute;inset:0}
 }
 @media (min-width:62rem){.journey .jpair{grid-template-columns:minmax(0,5fr) minmax(0,6fr)}:lang(lv) .journey h3{font-size:clamp(2.2rem,4.2vw,3.9rem)}}
+
+/* Refinement: page headings on the same calmer scale as the home hero */
+.h1{font-weight:640;font-size:clamp(2.75rem,1.9rem + 4.4vw,5.5rem);line-height:.96;letter-spacing:-.028em}
+.quote__side .h1{font-size:clamp(2.6rem,1.9rem + 3vw,4.25rem)}
+@media (min-width:62rem){
+  .ph__in .h1{max-width:13ch}
+  :lang(lv) .ph--plain .h1{font-size:clamp(3.25rem,5.6vw,5.5rem)}
+  :lang(lv) .ph--image .ph__in .h1{max-width:16ch;font-size:clamp(3rem,5vw,5rem)}
+  :lang(lv) .quote__side .h1{font-size:clamp(2.6rem,4vw,3.9rem)}
+}
+:lang(lv) .quote__side .h1{font-size:clamp(2.1rem,10.5vw,3rem)}
+@media (min-width:62rem){:lang(lv) .quote__side .h1{font-size:clamp(2.6rem,4vw,3.9rem)}}
