@@ -26,3 +26,8 @@ Set the repository secrets `SG_HOST`, `SG_PORT`, `SG_USER`, `SG_SSH_KEY` and `SG
 - **Headings:** every section heading uses `.h2` (`--step3`); page titles use `.h1`.
 - **Spacing:** all sections use `--section` for vertical padding; side gutters use `--gut`.
 - **Components:** square-cornered buttons, 1px hairline rules, flat cards with no shadows or tilt.
+
+## Editing and URLs
+
+- Edit the homepage in `src/index.html`, never the `index.html` in the root (it is overwritten by the build). Other pages are defined in `build.py`. Run `python3 build.py` after any change.
+- Pages are published at clean addresses: `/product/`, `/lv/quote/` and so on. The old `product.html` style addresses remain as small redirect files.

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js" data-head="dark" data-mid="dark" data-solid>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Request a quote | Worming</title>
+<meta name="description" content="Request a delivered price for worm humus anywhere in the EU.">
+<link rel="preload" href="../fonts/literata-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../fonts/onest-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="alternate" hreflang="lv" href="../lv/quote/">
+<link rel="stylesheet" href="../css/site.css?v=a12a23c4">
+<link rel="stylesheet" href="../css/pages.css?v=20f4337d">
+<link rel="icon" href="../images/logo/symbol-colour.png">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="site-header__in">
+    <a class="logo" href="../" aria-label="Worming, home">
+      <img class="l-colour" src="../images/logo/worming-colour.png" alt="" width="640" height="157">
+      <img class="l-light" src="../images/logo/worming-light.png" alt="" width="640" height="155">
+    </a>
+    <nav class="nav-desktop" aria-label="Main">
+      <a href="../">Home</a>
+      <a href="../product/">Product</a>
+      <a href="../applications/">Applications</a>
+      <a href="../quality/">Quality and supply</a>
+      <a href="../about/">About</a>
+      <a class="nav-cta" href="../quote/" aria-current="page">Request a quote</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Language"><a href="../quote/" aria-current="true" lang="en" hreflang="en">EN</a><a href="../lv/quote/" lang="lv" hreflang="lv">LV</a></div>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu"><span class="menu-btn__t">Menu</span><i aria-hidden="true"></i></button>
+  </div>
+</header>
+
+<div class="menu" id="menu">
+  <nav class="menu__links" aria-label="Main, mobile">
+    <a href="../">Home</a>
+    <a href="../product/">Product</a>
+    <a href="../applications/">Applications</a>
+    <a href="../quality/">Quality and supply</a>
+    <a href="../about/">About</a>
+  </nav>
+  <div class="menu__soil">
+    <img src="../images/placeholder/hero-below-tall.jpg" alt="" loading="lazy">
+    <svg class="menu__line" viewBox="0 0 1 1" preserveAspectRatio="none" aria-hidden="true"><path class="fill" d="M0,0 L1,0 L1,0.35 C0.62,0.95 0.3,0.1 0,0.6 Z"/><path d="M0,0.6 C0.3,0.1 0.62,0.95 1,0.35"/></svg>
+    <div class="menu__soil-in">
+      <a href="tel:+37120252517" data-k="company.phone">+371 20252517</a>
+      <a href="mailto:tomsupenieks@gmail.com" data-k="company.email">tomsupenieks@gmail.com</a>
+      <a class="btn btn--solid-light" href="../quote/" aria-current="page"><span>Request a quote</span></a>
+    </div>
+  </div>
+</div>
+
+<div class="gauge" aria-hidden="true">
+  <div class="gauge__ticks"><span class="gauge__mark"></span></div>
+  <span class="gauge__val num">0 cm</span>
+</div>
+
+<main id="main">
+
+<section class="quote" data-theme="dark">
+  <div class="quote__side">
+    <div class="quote__bg"><picture><source media="(min-aspect-ratio:1/1)" srcset="../images/placeholder/hero-below-wide.jpg"><img src="../images/placeholder/hero-below-tall.jpg" alt="" fetchpriority="high"></picture></div>
+    <div class="quote__side-in">
+      <h1 class="h1">Request a quote</h1>
+      <p class="lede">Four short steps. We reply with a price delivered to your site.</p>
+      <h2 class="q-sub">What happens next</h2>
+      <ol class="next">
+        <li>We read your request and check format and volume.</li>
+        <li>You receive a delivered price and the specification sheet.</li>
+        <li>If you asked for one, we send a sample.</li>
+      </ol>
+      <h2 class="q-sub">Prefer to talk?</h2>
+      <p class="contact"><a href="tel:+37120252517" data-k="company.phone">+371 20252517</a><a href="mailto:tomsupenieks@gmail.com" data-k="company.email">tomsupenieks@gmail.com</a></p>
+    </div>
+  </div>
+
+  <div class="quote__main">
+    <!-- Set data-endpoint to your form service URL (for example a Formspree endpoint) to enable sending. -->
+    <form id="quote-form" class="qf" method="post" action="#" data-endpoint="" novalidate>
+      <div class="qf__progress" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      <p class="qf__count small" aria-live="polite"></p>
+
+      <fieldset class="qf__step">
+        <legend>Your business</legend>
+        <div class="f"><label for="company">Company</label><input id="company" name="company" type="text" autocomplete="organization" required><p class="err" hidden>Enter your company name.</p></div>
+        <div class="f"><label for="operation">Type of operation</label><select id="operation" name="operation" required><option value="">Select</option><option>Substrate or growing-media producer</option><option>Greenhouse or young-plant grower</option><option>Orchard or vineyard</option><option>Organic vegetable grower</option><option>Nursery</option><option>Distributor</option><option>Other</option></select><p class="err" hidden>Choose the closest match.</p></div>
+        <div class="f"><label for="country">Delivery country</label><select id="country" name="country" autocomplete="country-name" required><option value="">Select</option><option>Austria</option><option>Belgium</option><option>Bulgaria</option><option>Croatia</option><option>Cyprus</option><option>Czechia</option><option>Denmark</option><option>Estonia</option><option>Finland</option><option>France</option><option>Germany</option><option>Greece</option><option>Hungary</option><option>Ireland</option><option>Italy</option><option>Latvia</option><option>Lithuania</option><option>Luxembourg</option><option>Malta</option><option>Netherlands</option><option>Poland</option><option>Portugal</option><option>Romania</option><option>Slovakia</option><option>Slovenia</option><option>Spain</option><option>Sweden</option><option>Other</option></select><p class="err" hidden>Choose a country.</p></div>
+      </fieldset>
+
+      <fieldset class="qf__step">
+        <legend>What you need</legend>
+        <div class="f"><label for="application">Intended application</label><input id="application" name="application" type="text" placeholder="Tomato propagation mix"></div>
+        <div class="f"><label for="format">Format</label><select id="format" name="format"><option value="">Select</option><option>Big bags</option><option>Sacks</option><option>Bulk</option><option>Not sure yet</option></select></div>
+        <div class="f"><label for="quantity">Estimated quantity per year</label><input id="quantity" name="quantity" type="text" placeholder="20 big bags"></div>
+        <div class="f"><label for="timing">When do you need it?</label><input id="timing" name="timing" type="text" placeholder="March 2027"></div>
+        <label class="check"><input type="checkbox" name="sample" value="yes"><span>Send me a sample first</span></label>
+      </fieldset>
+
+      <fieldset class="qf__step">
+        <legend>Delivery</legend>
+        <div class="f"><label for="postcode">Delivery postcode or region</label><input id="postcode" name="postcode" type="text" autocomplete="postal-code"></div>
+        <div class="f"><span class="f__label" id="unload-l">Unloading on site</span>
+          <div class="radios" role="radiogroup" aria-labelledby="unload-l">
+            <label class="check"><input type="radio" name="unloading" value="Forklift available"><span>Forklift available</span></label>
+            <label class="check"><input type="radio" name="unloading" value="Tail-lift needed"><span>Tail-lift needed</span></label>
+            <label class="check"><input type="radio" name="unloading" value="Not sure"><span>Not sure</span></label>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="qf__step">
+        <legend>Your contact details</legend>
+        <div class="f"><label for="name">Name</label><input id="name" name="name" type="text" autocomplete="name" required><p class="err" hidden>Enter your name.</p></div>
+        <div class="f"><label for="email">Work email</label><input id="email" name="email" type="email" autocomplete="email" required><p class="err" hidden>Enter an email address like name@company.com.</p></div>
+        <div class="f"><label for="phone">Phone (optional)</label><input id="phone" name="phone" type="tel" autocomplete="tel"></div>
+        <div class="f"><label for="notes">Notes (optional)</label><textarea id="notes" name="notes" rows="3"></textarea></div>
+        <div class="f"><label class="check"><input type="checkbox" id="consent" name="consent" required><span>I agree that Worming uses these details to answer my request. See the <a href="../privacy/">privacy policy</a>.</span></label><p class="err" hidden>Tick the box so we can reply.</p></div>
+      </fieldset>
+
+      <div class="qf__nav">
+        <button type="button" class="btn btn--ghost-dark qf__back" hidden><span>Back</span></button>
+        <button type="button" class="btn btn--solid-dark qf__next"><span>Next</span></button>
+        <button type="submit" class="btn btn--solid-dark qf__send"><span>Send request</span></button>
+      </div>
+    </form>
+    <div class="qf__done" id="quote-done" hidden tabindex="-1">
+      <h2 class="h2" style="font-size:var(--step2);color:var(--forest)"></h2>
+      <p class="lede" style="margin-top:1rem"></p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer" data-theme="light">
+  <div class="wrap">
+    <div class="site-footer__grid">
+      <div class="site-footer__brand">
+        <img src="../images/logo/worming-colour.png" alt="Worming" width="640" height="157" loading="lazy">
+        <p class="site-footer__tag">Where better growth begins.</p>
+      </div>
+      <div class="site-footer__co">
+        <p><span data-k="company.legalName">SIA "Worming"</span><br>Reg. no. <span class="num" data-k="company.regNo">48503018418</span></p>
+        <p data-k="company.address">"Līči", Vītiņu pagasts, Auces novads, LV-3721, Latvia</p>
+        <p><a href="tel:+37120252517" data-k="company.phone">+371 20252517</a></p>
+        <p><a href="mailto:tomsupenieks@gmail.com" data-k="company.email">tomsupenieks@gmail.com</a></p>
+      </div>
+    </div>
+    <div class="site-footer__legal">
+      <span>© 2023–2027 SIA "Worming"</span>
+      <span class="site-footer__links"><a href="../privacy/">Privacy policy</a><a href="../company/">Company details</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/site.js?v=5082ee57"></script>
+<script src="../js/quote.js?v=3d569fec"></script>
+</body>
+</html>

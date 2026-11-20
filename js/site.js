@@ -6,7 +6,8 @@
 
   /* ---------- Content binding: one editable data file ---------- */
   var LV = doc.lang === 'lv';
-  fetch(LV ? '../content/site.lv.json' : 'content/site.json').then(function (r) { return r.json(); }).then(function (d) {
+  var ROOT = (document.currentScript && document.currentScript.src) ? new URL('..', document.currentScript.src).href : '';
+  fetch(ROOT + (LV ? 'content/site.lv.json' : 'content/site.json')).then(function (r) { return r.json(); }).then(function (d) {
     document.querySelectorAll('[data-k]').forEach(function (el) {
       var v = el.getAttribute('data-k').split('.').reduce(function (o, k) { return o && o[k]; }, d);
       if (typeof v === 'string') {

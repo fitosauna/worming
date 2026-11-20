@@ -1,7 +1,11 @@
 #!/usr/bin/env python3
 """Builds the inner pages from shared header/footer taken from index.html.
 Run: python3 build.py   (index.html is hand-written and is the source of the shared parts)"""
-import re, pathlib
+import re, pathlib, shutil
+# The hand-written homepage lives in src/index.html. The build copies it to index.html,
+# generates the other pages from its header and footer, then rewrites links to clean URLs.
+shutil.copy(pathlib.Path(__file__).parent / 'src' / 'index.html', pathlib.Path(__file__).parent / 'index.html')
+
 root = pathlib.Path(__file__).parent
 idx = (root / 'index.html').read_text()
 chrome = idx[idx.index('<a class="skip"'):idx.index('<main id="main">')]
@@ -516,3 +520,35 @@ def _stamp():
         if s2 != s: open(f, 'w', encoding='utf-8').write(s2)
     print('stamped css/js versions')
 _stamp()
+
+
+# Clean URLs: /product/ instead of /product.html, and no "index.html" in links.
+# Each page moves to <name>/index.html; the old <name>.html stays as a redirect.
+def _clean_urls():
+    here = pathlib.Path(__file__).parent
+    attr = _re.compile(r'\b(href|src|srcset|action)="([^"]*)"')
+    def norm(u):
+        if not u or u.startswith(('#', 'http:', 'https:', 'mailto:', 'tel:', '/', 'data:')): return None
+        m = _re.match(r'^([^?#]*)(.*)$', u); path, rest = m.group(1), m.group(2)
+        if path.endswith('index.html'): path = path[:-len('index.html')] or './'
+        elif path.endswith('.html'): path = path[:-len('.html')] + '/'
+        return path, rest
+    for d in ('', 'lv/'):
+        for f in sorted((here / d).glob('*.html')) if d else sorted(here.glob('*.html')):
+            name = f.stem; deeper = name != 'index'
+            s = f.read_text(encoding='utf-8')
+            def rep(m):
+                r = norm(m.group(2))
+                if r is None: return m.group(0)
+                path, rest = r
+                if deeper: path = '../' + ('' if path == './' else path)
+                return f'{m.group(1)}="{path}{rest}"'
+            out = attr.sub(rep, s)
+            if deeper:
+                (here / d / name).mkdir(exist_ok=True)
+                (here / d / name / 'index.html').write_text(out, encoding='utf-8')
+                f.write_text(f'<!doctype html><html lang="{"lv" if d else "en"}"><head><meta charset="utf-8"><meta name="robots" content="noindex"><title>Worming</title><link rel="canonical" href="{name}/"><meta http-equiv="refresh" content="0; url={name}/"></head><body><a href="{name}/">Worming</a><script>location.replace("{name}/"+location.search+location.hash)</script></body></html>\n', encoding='utf-8')
+            else:
+                f.write_text(out, encoding='utf-8')
+    print('clean URLs written')
+_clean_urls()
