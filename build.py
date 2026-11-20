@@ -446,14 +446,14 @@ about = f"""
       <p class="why__lede">Worming was founded in 2023 on a simple belief: good health starts with good food, and good food starts with healthy soil.</p>
       <p>We care about nutrition, wellbeing and sustainable agriculture. Making worm humus is how we support the growers who produce high-quality organic food.</p>
     </div>
-    <figure class="why__fig"><div class="why__img">{img1('about-founder-tall', 'Toms Upenieks at the farm in Auce')}</div><figcaption><strong>Toms Upenieks</strong><span>Founder</span></figcaption></figure>
+    <figure class="why__fig"><div class="why__img">{img1('about-founder-tall', 'Toms Upenieks at the farm in Auce')}</div><figcaption><strong>Toms Upenieks</strong><span>Co-founder</span></figcaption></figure>
   </div>
 </section>
 
 <section class="sec sec--forest gen" data-theme="dark">
   <figure class="gen__img">{pic('about-generations', 'Two generations of the family beside a bed of worm humus')}</figure>
   <div class="wrap">
-    <h2 class="h2 gen__title">Two generations of family farming.</h2>
+    <h2 class="h2 gen__title">Family farming across generations.</h2>
     <p class="lede muted" style="margin-top:1.5rem;max-width:38ch">Worming is built on practical farming knowledge passed from one generation to the next, combined with a modern approach to sustainable production and international business.</p>
   </div>
 </section>

@@ -597,3 +597,11 @@ html[data-hide="1"]:not(.menu-open) .site-header{transform:translateY(-101%)}
 .close__orn,.btn .arr{display:none !important}
 @media (max-width:61.99rem){.gauge{display:none}}
 .site-footer__links{display:inline-flex;flex-wrap:wrap;gap:.35rem 1.5rem}
+/* Hero (desktop): statement left, actions right, clear air under the headline */
+@media (min-aspect-ratio:1/1){
+  .hero__stage{--fs:min(8.2vw,21svh)}
+  .hero__foot{grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:2rem 3rem}
+  .hero__foot p{max-width:38rem;font-size:1.0625rem}
+  .hero__foot p strong{font-size:1.375rem;margin-bottom:.3rem}
+  .hero__cta{flex-wrap:nowrap}
+}
